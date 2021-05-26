@@ -1,0 +1,18 @@
+body {
+    background-color:violet;
+}
+
+h1 {
+    color: white;
+    text-align:center;
+}
+
+.err {
+    color:red;
+}
+table, tr, td {
+    border: 1px solid white;
+}
+td {
+    color:white;
+}

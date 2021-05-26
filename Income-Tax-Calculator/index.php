@@ -40,49 +40,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    
+
     // Calculations
     $totalsalary = $annualsalary = $annualtaxallowance = $taxamount = $yearlysocialsecurityfee = 0;
     if(isset($salarytype) && $salarytype == "Yearly-Salary") {
         $annualsalary = $salary;
-        $annualtaxallowance = $taxallowance;
-
-        // Conditions
-        if($annualsalary < 10000) {
-            $totalsalary = $annualsalary + $annualtaxallowance;
-        } elseif($annualsalary > 10000 && $annualsalary < 25000) {
-            $taxamount = $annualsalary * 0.11;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        } elseif($annualsalary > 25000 && $annualsalary < 50000) {
-            $taxamount = $annualsalary * 0.30;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        } else {
-            $taxamount = $annualsalary * 0.45;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        }
-    
+        $annualtaxallowance = $taxallowance;    
      }elseif(isset($salarytype) && $salarytype == "Montly-Salary") {
         $annualsalary = $salary * 12;
         $annualtaxallowance = $taxallowance * 12;
+    }
 
-        // Conditions
-        if($annualsalary < 10000) {
-            $totalsalary = $annualsalary + $annualtaxallowance;
-        } elseif($annualsalary > 10000 && $annualsalary < 25000) {
-            $taxamount = $annualsalary * 0.11;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        } elseif($annualsalary > 25000 && $annualsalary < 50000) {
-            $taxamount = $annualsalary * 0.30;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        } else {
-            $taxamount = $annualsalary * 0.45;
-            $yearlysocialsecurityfee = $annualsalary * 0.04;
-            $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
-        }
+    // General Conditions
+    if($annualsalary < 10000) {
+        $totalsalary = $annualsalary + $annualtaxallowance;
+    } elseif($annualsalary > 10000 && $annualsalary < 25000) {
+        $taxamount = $annualsalary * 0.11;
+        $yearlysocialsecurityfee = $annualsalary * 0.04;
+        $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
+    } elseif($annualsalary > 25000 && $annualsalary < 50000) {
+        $taxamount = $annualsalary * 0.30;
+        $yearlysocialsecurityfee = $annualsalary * 0.04;
+        $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
+    } else {
+        $taxamount = $annualsalary * 0.45;
+        $yearlysocialsecurityfee = $annualsalary * 0.04;
+        $totalsalary = ($annualsalary - ($taxamount + $yearlysocialsecurityfee)) + $annualtaxallowance;
     }
 
     // Monthly Salary Stuff is Simply Yearly Divided By 12
